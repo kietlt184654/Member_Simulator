@@ -1,4 +1,4 @@
-const { normalizeBaseUrl } = require('./_relay')
+import { normalizeBaseUrl } from './_relay.js'
 
 function setCors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -6,7 +6,7 @@ function setCors(res) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-api-key,x-target-base-url')
 }
 
-module.exports = (req, res) => {
+export default (req, res) => {
   if (req.method === 'OPTIONS') {
     setCors(res)
     return res.status(204).end()

@@ -78,7 +78,7 @@ function createPlanRoutePayload(body) {
   return body || { waypoints: [] }
 }
 
-module.exports = {
+export {
   normalizeBaseUrl,
   resolveTargetBaseUrl,
   hasApiKey,
