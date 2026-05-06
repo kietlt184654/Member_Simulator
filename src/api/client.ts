@@ -345,6 +345,17 @@ export function buildCurlPreview(options: CurlOptions): string {
   return `curl -X ${options.method} "${url}" \\\\\n${headerPart}${bodyPart}`
 }
 
+export function buildCalculateRangePayload(body: CalculateRangeRequest): Record<string, unknown> {
+  return {
+    latitude: body.currentLat,
+    longitude: body.currentLon,
+    currentLat: body.currentLat,
+    currentLon: body.currentLon,
+    currentBatteryPercent: body.currentBatteryPercent,
+    vehicleCode: body.vehicleCode,
+  }
+}
+
 export function calculateRange(
   settings: ApiSettings,
   body: CalculateRangeRequest,
@@ -353,7 +364,7 @@ export function calculateRange(
     method: 'POST',
     path: '/api/RangeCalculation/calculate',
     settings,
-    body,
+    body: buildCalculateRangePayload(body),
   })
 }
 

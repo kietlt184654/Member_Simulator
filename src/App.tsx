@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import './App.css'
 import {
   calculateRange,
+  buildCalculateRangePayload,
   estimateChargingCost,
   getStationAmenities,
   buildCurlPreview,
@@ -102,7 +103,7 @@ function App() {
         kind: 'direct' as const,
         method: 'POST' as const,
         path: '/api/RangeCalculation/calculate',
-        body: calculateRangeReq,
+        body: buildCalculateRangePayload(calculateRangeReq),
       }
     }
 
